@@ -1,0 +1,87 @@
+sudo su -
+	<<<<check whether java is installed or not >>>>>
+    1  java --version
+	
+	<<< Install wget >>>>>>>>
+	sudo apt install wget
+	
+	<<<<< Downloading the tar file of java-jdk-17.0.2 >>>
+    2  wget https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz
+	
+	
+	<<<<<<<Extarct the tar file using below command>>>>>>
+    3  tar -xvzf openjdk-17.0.2_linux-x64_bin.tar.gz
+	
+	<<<<<change(or)move the path of extracted file to /opt/jdk-17 >>>>>>>
+    4  mv jdk-17.0.2/ /opt/jdk-17
+	
+	
+    5  ls
+	
+	<<<<<<<change the path to /opt  >>>>>>
+    6  cd /opt
+	
+    7  ll
+	
+	<<<<<<Add java home path by using below coomand>>>>>>>>>>
+	
+    8  sudo vi /etc/profile
+	## it opens profile file editor
+	## go to insert mode and add the below java home path
+	
+	export JAVA_HOME=/opt/jdk-17
+  export PATH=$PATH:$JAVA_HOME/bin
+	
+	escape
+	:wq!
+
+	
+	<<<Run the profile file with the help of below command>>>
+	
+    9  source /etc/profile
+	
+	<<<Now check the java version >>>>
+   10  java --version
+   11  cd ..
+   
+   <<<<<Similarly download the maven tar file >>>>
+   12  wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+   
+   <<<< Extract maven tar file >>>>>
+   
+   13  tar -xvf apache-maven-3.9.9-bin.tar.gz
+   
+   14  ll
+   ##### removing the tar file after extraction ####
+   
+   15  rm -rf apache-maven-3.9.9-bin.tar.gz
+   
+   16  ll
+   
+   ###### Moving the Extracted maven file to /opt/maven-3.9 ######
+   17  mv apache-maven-3.9.9 /opt/maven-3.9
+   
+   
+   18  ll
+   
+  ### Change path to /opt ####
+   19  cd /opt
+   
+   
+   20  ll
+   
+   #####Add the maven home path ####
+   
+   21  sudo vi /etc/profile
+
+ 	escape
+	:wq!
+
+   export M2_HOME=/opt/maven-3.9
+   export PATH=$PATH:/opt/maven-3.9/bin
+   
+   #### Run the profile file ###
+   24  source /etc/profile
+   
+   ####check the maven version using below command ##
+   25  mvn --version
