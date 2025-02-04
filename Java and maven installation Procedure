@@ -30,7 +30,7 @@ sudo su -
 	## go to insert mode and add the below java home path
 	
 	export JAVA_HOME=/opt/jdk-17
-  export PATH=$PATH:$JAVA_HOME/bin
+        export PATH=$PATH:$JAVA_HOME/bin
 	
 	escape
 	:wq!
