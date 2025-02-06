@@ -1,0 +1,67 @@
+
+    #### <<<< Download sonarqube zip file >>>>
+     wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.6.92038.zip
+   
+    #### <<<<<<Install unzip >>>>>
+   
+     yum install unzip -y
+   
+    #### <<<< Unzip sonar zip file >>>>>
+	
+     unzip sonarqube-9.9.6.92038.zip
+     ll
+   
+     #### <<<<<<< Rename mv sonarqube-9.9.6.92038 to sonarqube-9.9.6  >>>>>
+   
+     mv sonarqube-9.9.6.92038 sonarqube-9.9.6
+     
+   
+    #### <<<<Adding sonar user >>>>>
+   
+     useradd sonar
+	 
+     #### <<<<<<< ADD sonar user to sudo file >>>>>>
+   
+     visudo
+   
+## The COMMANDS section may have other options added to it.
+##
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+sonar   ALL=(ALL)       NOPASSWD: ALL
+## Allows members of the 'sys' group to run networking, software,
+## service management apps and more.
+# %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
+
+## Allows people in group wheel to run all commands
+%wheel  ALL=(ALL)       ALL
+
+
+
+    #### <<<<< Grant Read, Write and Execute permissions to /opt/sonarqube-9.9.6  >>>>>
+     chmod -R 775 /opt/sonarqube-9.9.6
+
+   
+    #### <<<<<< Change owenrship to sonar user >>>>>>
+   
+     chown -R sonar:sonar /opt/sonarqube-9.9.6
+    
+    #### <<<<<< Login to sonar user >>>>>
+   
+    su - sonar
+     
+	#### <<< Change path to below folder  >>>>>
+	 
+	 cd /opt/sonarqube-9.9.6/bin
+	 
+     cd linux-x86-64/
+	 
+	 ##### <<<<<< Start sonar service >>>>
+	 
+     sh sonar.sh start
+     
+	 #### <<< Check sonar service status >>>
+	 sh sonar.sh status
+	 
+	#### <<<< Connect to local host with port number 9000 >>>>
+	 http://<IP address>:9000
