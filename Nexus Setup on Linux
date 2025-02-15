@@ -1,0 +1,63 @@
+sudo apt-get update
+      >>>>>>>Java is required for nexus<<<<
+	## Installing JAVA 17 version
+	
+	
+      wget https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz
+    
+	Extrcting tar file
+	
+	  tar -xvzf openjdk-17.0.2_linux-x64_bin.tar.gz
+      ll
+	  
+    #### <<<<<< moving extracted file to /opt/jdk-17 path >>>>
+	
+	  mv jdk-17.0.2/ /opt/jdk-17
+	
+	Adding java home path 
+      sudo vi /etc/profile
+	  
+	export JAVA_HOME=/opt/jdk-17
+    export PATH=$PATH:$JAVA_HOME/bin
+	
+      ##### To apply the changes in profile file run below command ###
+	  
+     source /etc/profile
+	 
+     java --version
+	 
+     	 
+     cd /opt
+	 
+     <<<< Downloading nexus tar file>>>>>>
+	 
+     wget https://download.sonatype.com/nexus/3/nexus-3.72.0-04-unix.tar.gz
+	 
+     tar -xvzf nexus-3.72.0-04-unix.tar.gz
+	 
+     ll
+     rm -rf nexus-3.72.0-04-unix.tar.gz
+	 
+	 #### Adding nexus user####
+     useradd nexus
+	 
+     passwd nexus
+     ll
+     chown -R nexus:nexus nexus-3.72.0-04/
+	 
+     chown -R nexus:nexus sonatype-work/
+     ll
+     cd nexus-3.72.0-04/
+	 
+     cd bin
+	 
+     ll
+	 
+     vi nexus.rc
+	 
+     ./nexus start
+	 
+     ./nexus status
+	 
+	 
+      cat /opt/sonatype-work/nexus3/admin.password
