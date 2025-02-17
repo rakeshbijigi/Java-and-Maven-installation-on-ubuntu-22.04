@@ -66,3 +66,19 @@ yum install wget -y
 	 cd /opt/tomcat-9/conf/
 	 
 	 vim tomcat-users.xml
+
+
+
+
+  useradd rakesh
+  passwd rakesh
+  vi /etc/ssh/sshd_config
+  ---->>> Change passwordAuthentication to yes
+  ### restart the sshd service ###
+  service sshd restart
+
+
+
+
+
+  
