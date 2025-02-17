@@ -1,0 +1,68 @@
+yum install wget -y
+      
+	  cd /opt
+	  
+	  
+	 ##### Downloading tomcat-9 version tar file######
+	 
+	 https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.100/bin/apache-tomcat-9.0.100.tar.gz
+	 
+	 ### Extracting tar file######
+	 
+     tar -xvzf apache-tomcat-9.0.100.tar.gz
+	 
+     ll
+	 #######Removing tar file#####
+     rm -rf apache-tomcat-9.0.100.tar.gz
+	 
+	 
+     ll
+	 ### Renaming the folder name ####
+     mv apache-tomcat-9.0.100/ tomcat-9
+	 
+	 cd /opt/tomcat-9/bin
+	 
+     #### provide execute permissions to shell files in bin folder#####
+	 
+	 chmod +x *
+	 
+	 
+	 ########create links to start and stop tomcat#############
+	 
+	 ln -s /opt/tomcat-9/bin/start.sh /usr/bin/startTomcat    >>>>>> start link
+	 
+	 ln -s /opt/tomcat-9/bin/shutdown.sh /usr/bin/stopTomcat  >>>>> shutdown link
+	 
+	 
+	 ### start the tomcat server using above link###
+	 
+	 startTomcat
+	 
+	 
+	 
+	 ##### to check which process is running###
+	 
+	 ps -ef | grep -i java*
+     
+     
+	 ######accessibility (From where you want to login) ###########
+	 
+	 cd /opt/tomcat-9/webapps/manager/META-INF/
+	 
+	 ### edit the context.xml ####
+	 ####comment the localhost valve#####
+	 
+	 
+	 vim context.xml
+	 
+	 
+	<!--
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+  -->
+     
+	 
+	 ##### add user and role in tomcat-users.xml
+	 cd /opt/tomcat-9/conf/
+	 
+	 vim tomcat-users.xml
